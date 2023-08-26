@@ -1,16 +1,13 @@
 import React from "react";
 import { Breadcrumb as AntdBreadcrumb } from "antd";
-import { ItemType } from "antd/es/breadcrumb/Breadcrumb";
+import { BreadcrumbProps } from "antd/es/breadcrumb/Breadcrumb";
 
-const ListItemsBreadcrumb: ItemType[] = [
-  { key: "home", breadcrumbName: "Home" },
+const ListItemsBreadcrumb: BreadcrumbProps["items"] = [
+  { key: "home", title: "Home" },
 ];
 
 export const Breadcrumb = () => {
   return (
-    <AntdBreadcrumb
-      style={{ margin: "16px 0" }}
-      items={ListItemsBreadcrumb}
-    ></AntdBreadcrumb>
+    <AntdBreadcrumb style={{ margin: "16px 0" }} items={ListItemsBreadcrumb} />
   );
 };

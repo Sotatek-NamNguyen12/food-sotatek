@@ -2,6 +2,7 @@ import { Layout } from "antd";
 import React from "react";
 
 export const Footer = () => {
+  const year = new Date().getFullYear();
   return (
     <Layout.Footer
       style={{
@@ -12,7 +13,7 @@ export const Footer = () => {
         width: "100%",
       }}
     >
-      Ant Design ©2023 Created by Sotatek
+      {`Food Delivery ©${year} Created by Sotatek`}
     </Layout.Footer>
   );
 };
