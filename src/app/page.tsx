@@ -1,5 +1,16 @@
-import Image from "next/image";
+"use client";
+
+import { getData } from "./api";
 
 export default function Home() {
-  return <div>Nguyen Van Nam</div>;
+  const onClick = async () => {
+    const data = await getData();
+  };
+
+  return (
+    <div>
+      <div>Nguyen Van Nam</div>
+      <button onClick={onClick}>Click</button>
+    </div>
+  );
 }
