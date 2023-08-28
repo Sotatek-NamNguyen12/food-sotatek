@@ -7,9 +7,6 @@ export const Footer = () => {
     <Layout.Footer
       style={{
         textAlign: "center",
-        position: "sticky",
-        top: 0,
-        zIndex: 1,
         width: "100%",
       }}
     >

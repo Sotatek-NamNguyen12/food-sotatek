@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
 const axiosConfig = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API,
@@ -16,11 +16,24 @@ axiosConfig.interceptors.request.use(
 
 axiosConfig.interceptors.response.use(
   (response) => {
-    return response.data;
+    return response;
   },
   (error) => {
     return Promise.reject(error);
   }
 );
 
-export default axiosConfig;
+export async function request<TRequest, TResponse>(
+  method: string,
+  url: string,
+  requestData?: TRequest
+): Promise<TResponse> {
+  const config: AxiosRequestConfig = {
+    method,
+    url,
+    data: requestData,
+  };
+
+  const response: AxiosResponse<TResponse> = await axiosConfig(config);
+  return response.data;
+}

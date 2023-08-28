@@ -8,6 +8,15 @@ const ListItemsBreadcrumb: BreadcrumbProps["items"] = [
 
 export const Breadcrumb = () => {
   return (
-    <AntdBreadcrumb style={{ margin: "16px 0" }} items={ListItemsBreadcrumb} />
+    <AntdBreadcrumb
+      style={{
+        padding: "16px",
+        position: "sticky",
+        top: "64px",
+        zIndex: 1,
+        background: "white",
+      }}
+      items={ListItemsBreadcrumb}
+    />
   );
 };
