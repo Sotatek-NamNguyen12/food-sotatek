@@ -4,5 +4,5 @@ import { getMerchantData } from "../api";
 
 export function useGetMerchant() {
   const query = useQuery("merchant", getMerchantData);
-  return { query };
+  return query;
 }
