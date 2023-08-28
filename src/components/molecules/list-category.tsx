@@ -4,9 +4,8 @@ import { useAppSelector } from "@/hooks/useStore";
 
 export const ListCategory: React.FC = () => {
   const category = useAppSelector((state) => state.category.category);
-  console.log({ category });
   return (
-    <div>
+    <>
       <div
         style={{
           padding: "0px 20px 20px",
@@ -73,6 +72,6 @@ export const ListCategory: React.FC = () => {
           }}
         />
       </div>
-    </div>
+    </>
   );
 };
