@@ -1,16 +1,14 @@
 "use client";
 
-import { getData } from "./api";
+import { useGetMerchant } from "./api/useGetMerchant";
 
 export default function Home() {
-  const onClick = async () => {
-    const data = await getData();
-  };
+  const { data } = useGetMerchant();
+  console.log(data);
 
   return (
     <div>
       <div>Nguyen Van Nam</div>
-      <button onClick={onClick}>Click</button>
     </div>
   );
 }

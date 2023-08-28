@@ -1,11 +1,10 @@
-export const getData = async () => {
+import axiosConfig from "@/api/config";
+
+export const getMerchantData = async () => {
   try {
-    const response = await fetch(
-      "https://portal.grab.com/foodweb/v2/merchants/VNGFVN000006ic?latlng=21.0278,105.8342",
-      { mode: "no-cors" }
-    );
-    return response.json();
+    const response = await axiosConfig.get<any>("/fetch_merchant_data");
+    return response;
   } catch (error) {
-    console.log({ error });
+    throw error;
   }
 };
