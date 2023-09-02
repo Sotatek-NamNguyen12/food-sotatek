@@ -1,7 +1,6 @@
-import { useAppSelector } from "@/hooks/useStore";
+import React from "react";
 import { LeftCircleOutlined, RightCircleOutlined } from "@ant-design/icons";
 import { Anchor, AnchorProps, Button, Space } from "antd";
-import React, { useMemo } from "react";
 import styled from "styled-components";
 
 const SpaceStyled = styled(Space)`
@@ -13,18 +12,7 @@ const SpaceStyled = styled(Space)`
   }
 `;
 
-export const AnchorCategory = () => {
-  const category = useAppSelector((state) => state.category.category);
-
-  const items: AnchorProps["items"] = useMemo(() => {
-    const data = category.map((item, index) => ({
-      key: `${index + 1}`,
-      href: `#${index + 1}`,
-      title: item.name,
-    }));
-    return data;
-  }, [category]);
-
+export const AnchorCategory = ({ items }: AnchorProps) => {
   return (
     <SpaceStyled>
       <Button type="primary" icon={<LeftCircleOutlined />} />

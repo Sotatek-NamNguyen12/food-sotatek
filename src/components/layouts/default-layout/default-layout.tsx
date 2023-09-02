@@ -1,6 +1,8 @@
 import React, { PropsWithChildren } from "react";
 import { Layout } from "antd";
-import { Breadcrumb, Footer, Header } from "@/components";
+import { Breadcrumb } from "@/components";
+import { Header } from "./header";
+import { Footer } from "./footer";
 
 const { Content } = Layout;
 

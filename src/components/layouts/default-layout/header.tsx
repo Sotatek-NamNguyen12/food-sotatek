@@ -1,8 +1,8 @@
 import { Layout } from "antd";
 import React from "react";
-import { MenuHeader } from "@/components";
 import Image from "next/image";
 import LogoSotatek from "@/app/images/logo-sotatek.png";
+import { MenuHeader } from "./menu-header";
 
 export const Header = () => {
   return (

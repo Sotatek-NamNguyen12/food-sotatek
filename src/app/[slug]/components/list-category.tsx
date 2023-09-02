@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { AnchorCategory } from "@/components";
 import { useAppSelector } from "@/hooks/useStore";
+import { AnchorProps } from "antd";
 
 export const ListCategory: React.FC = () => {
-  const category = useAppSelector((state) => state.category.category);
+  const category = useAppSelector(
+    (state) => state.merchant.merchant.menu.categories
+  );
+  const items: AnchorProps["items"] = useMemo(() => {
+    const data = category.map((item, index) => ({
+      key: `${index + 1}`,
+      href: `#${index + 1}`,
+      title: item.name,
+    }));
+    return data;
+  }, [category]);
   return (
     <>
       <div
@@ -14,7 +25,7 @@ export const ListCategory: React.FC = () => {
           top: "calc(64px + 54px)",
         }}
       >
-        <AnchorCategory />
+        <AnchorCategory items={items} />
       </div>
       <div>
         <div

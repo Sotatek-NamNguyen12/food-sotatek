@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import { useGetMerchant } from "@/app/[slug]/api/useGetMerchant";
-import { ListCategory } from "@/components";
+import { useGetMerchantDetail } from "@/app/[slug]/api/useGetMerchantDetail";
+import { ListCategory } from "./components";
 
 function MerChantDetail() {
-  const { data, isSuccess } = useGetMerchant();
-  return <div>{isSuccess && data && <ListCategory />}</div>;
+  // const { data, isSuccess } = useGetMerchantDetail();
+  return <div>{<ListCategory />}</div>;
 }
 
 export default MerChantDetail;
