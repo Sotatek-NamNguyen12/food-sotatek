@@ -1,8 +1,8 @@
-import { useAppSelector } from "@/hooks/useStore";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import { Button, Card, Col, Image, Row } from "antd";
 import React, { useCallback, useMemo, useState } from "react";
 import styled from "styled-components";
+import { Item } from "../api/type";
 
 const Name = styled.p`
   word-break: break-word;
@@ -24,13 +24,20 @@ const ButtonWrapper = styled.div`
   gap: 10px;
 `;
 
+const StyledCard = styled(Card)`
+  height: 100%;
+  & > .ant-card-body {
+    height: 100%;
+  }
+`;
+
 type TypeButton = "INCREMENT" | "DECREMENT";
 
-export const ItemProduct = () => {
-  const item = useAppSelector(
-    (state) => state.merchant.merchant.menu.categories[0].items[0]
-  );
+interface ItemProductProps {
+  product: Item;
+}
 
+export const ItemProduct = ({ product }: ItemProductProps) => {
   const [count, setCount] = useState<number>(0);
 
   const handleCount = useCallback((type: TypeButton) => {
@@ -67,20 +74,24 @@ export const ItemProduct = () => {
     );
   }, [count, handleCount]);
 
-  console.log({ item });
   return (
-    <Card hoverable bordered={false}>
+    <StyledCard hoverable bordered={false}>
       <Row
-        style={{ display: "flex", flexDirection: "row", flexFlow: "nowrap" }}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          flexFlow: "nowrap",
+          height: "100%",
+        }}
       >
         <Col
-          flex={item?.imgHref ? "150px" : "0px"}
+          flex={product?.imgHref ? "150px" : "0px"}
           style={{ display: "flex", justifyContent: "flex-start" }}
         >
           <Image
             width={120}
             height={120}
-            src={item.imgHref}
+            src={product.imgHref}
             alt=""
             style={{ objectFit: "cover", borderRadius: "10px" }}
           />
@@ -96,12 +107,14 @@ export const ItemProduct = () => {
           }}
         >
           <div style={{ flex: 1 }}>
-            <Name>{item.name}</Name>
-            {item?.description && <Description>{item.description}</Description>}
+            <Name>{product.name}</Name>
+            {product?.description && (
+              <Description>{product.description}</Description>
+            )}
           </div>
           <ButtonWrapper>{handleRenderButton}</ButtonWrapper>
         </Col>
       </Row>
-    </Card>
+    </StyledCard>
   );
 };

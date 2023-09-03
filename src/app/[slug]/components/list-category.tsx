@@ -30,12 +30,9 @@ export const ListCategory: React.FC = () => {
         <AnchorCategory items={items} />
       </div>
       <div>
-        <Category id="part-1" />
-        <Category id="part-2" />
-        <Category id="part-3" />
-        <Category id="part-4" />
-        <Category id="part-5" />
-        <Category id="part-6" />
+        {category.map((item, index) => (
+          <Category key={item.ID} category={item} id={`part-${index + 1}`} />
+        ))}
       </div>
     </>
   );

@@ -7689,22 +7689,23 @@ export const fakeLocalStorage = {
     promoCodes: [],
     comment: "",
     profile: null,
-    basketSummary: {
-      cachedItems: [
-        {
-          itemID: "VNITE2023031202163620192",
-          basePrice: 27000,
-          modifierPrice: [],
-        },
-        {
-          itemID: "VNITE2022102220561649675",
-          basePrice: 65000,
-          modifierPrice: [],
-        },
-      ],
-      priceChanged: false,
-    },
   },
   quote: null,
   updatedAt: 1693621617612,
 };
+
+// basketSummary: {
+//   cachedItems: [
+//     {
+//       itemID: "VNITE2023031202163620192",
+//       basePrice: 27000,
+//       modifierPrice: [],
+//     },
+//     {
+//       itemID: "VNITE2022102220561649675",
+//       basePrice: 65000,
+//       modifierPrice: [],
+//     },
+//   ],
+//   priceChanged: false,
+// },
