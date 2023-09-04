@@ -89,7 +89,14 @@ export const ItemProduct = ({ product }: ItemProductProps) => {
   }, [count, handleCount]);
 
   return (
-    <StyledCard hoverable bordered={false}>
+    <StyledCard
+      hoverable
+      bordered={false}
+      style={{
+        opacity: product.available ? "1" : "0.5",
+        cursor: product.available ? "default" : "not-allowed",
+      }}
+    >
       <Row
         style={{
           display: "flex",
@@ -132,7 +139,7 @@ export const ItemProduct = ({ product }: ItemProductProps) => {
                 product?.discountedPriceInMin || product.priceInMinorUnit
               )}
             </Price>
-            {handleRenderButton}
+            {product.available && handleRenderButton}
           </ButtonWrapper>
         </Col>
       </Row>
