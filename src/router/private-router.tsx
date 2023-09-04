@@ -4,7 +4,7 @@ import { ModalLogin } from "@/components";
 import { useRouter } from "next/navigation";
 import React, { PropsWithChildren, useEffect, useState } from "react";
 
-type IUser = {
+export type IUser = {
   id: string;
   username: string;
   full_name: string;

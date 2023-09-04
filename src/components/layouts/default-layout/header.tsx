@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import LogoSotatek from "@/app/images/logo-sotatek.png";
 import { MenuHeader } from "./menu-header";
+import { UserHeader } from "./user-header";
 
 export const Header = () => {
   return (
@@ -16,13 +17,14 @@ export const Header = () => {
         alignItems: "center",
       }}
     >
-      {/* <Image
+      <Image
         src={LogoSotatek}
         alt="Logo Sotatek"
         height={50}
         style={{ filter: "brightness(500%)" }}
-      /> */}
+      />
       <MenuHeader />
+      <UserHeader />
     </Layout.Header>
   );
 };
