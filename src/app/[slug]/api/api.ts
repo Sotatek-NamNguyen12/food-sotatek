@@ -1,11 +1,11 @@
 import { request } from "@/api/config";
 import { MerchantResponse } from "./type";
 
-export const getMerchantDetail = async () => {
+export const getMerchantDetail = async (id: string) => {
   try {
     const response = await request<void, MerchantResponse>(
       "GET",
-      "/fetch_merchant_data"
+      `/v1/grab/merchant/${id}`
     );
     return response;
   } catch (error) {
