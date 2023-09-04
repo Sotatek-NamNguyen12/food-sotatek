@@ -3,6 +3,7 @@ import { Button, Card, Col, Image, Row } from "antd";
 import React, { useCallback, useMemo, useState } from "react";
 import styled from "styled-components";
 import { Item } from "../api/type";
+import { formatVND } from "@/utils";
 
 const Name = styled.p`
   word-break: break-word;
@@ -16,10 +17,16 @@ const Description = styled.div`
   font-size: 14px;
 `;
 
+const Price = styled.p`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+`;
+
 const ButtonWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
 `;
@@ -50,7 +57,14 @@ export const ItemProduct = ({ product }: ItemProductProps) => {
   const handleRenderButton = useMemo(() => {
     if (count) {
       return (
-        <>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "10px",
+          }}
+        >
           <Button
             type="default"
             icon={<MinusOutlined />}
@@ -62,7 +76,7 @@ export const ItemProduct = ({ product }: ItemProductProps) => {
             icon={<PlusOutlined />}
             onClick={() => handleCount("INCREMENT")}
           />
-        </>
+        </div>
       );
     }
     return (
@@ -112,7 +126,14 @@ export const ItemProduct = ({ product }: ItemProductProps) => {
               <Description>{product.description}</Description>
             )}
           </div>
-          <ButtonWrapper>{handleRenderButton}</ButtonWrapper>
+          <ButtonWrapper>
+            <Price>
+              {formatVND(
+                product?.discountedPriceInMin || product.priceInMinorUnit
+              )}
+            </Price>
+            {handleRenderButton}
+          </ButtonWrapper>
         </Col>
       </Row>
     </StyledCard>
