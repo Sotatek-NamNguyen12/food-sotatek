@@ -14,6 +14,7 @@ import React, { useState } from "react";
 export type AuthField = {
   username: string;
   password: string;
+  full_name?: string;
   remember: boolean;
 };
 
@@ -46,7 +47,11 @@ export function ModalLogin({ open, handleClose }: IModalLogin) {
   const onFinish = (values: AuthField) => {
     if (currentTab === ETab.REGISTER) {
       register.mutate(
-        { username: values.username, password: values.password },
+        {
+          username: values.username,
+          password: values.password,
+          full_name: values.full_name,
+        },
         {
           onSuccess: () => {
             handleClose();
@@ -92,6 +97,17 @@ export function ModalLogin({ open, handleClose }: IModalLogin) {
           initialValues={{ remember: true }}
           onFinish={onFinish}
         >
+          {currentTab === ETab.REGISTER && (
+            <Form.Item<AuthField>
+              label="Full name"
+              name="full_name"
+              rules={[
+                { required: true, message: "Please input your fullname!" },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+          )}
           <Form.Item<AuthField>
             label="Username"
             name="username"

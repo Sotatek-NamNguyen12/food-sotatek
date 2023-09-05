@@ -17,11 +17,10 @@ export const register = async (data: Omit<AuthField, "remember">) => {
 
 export const login = async (data: Omit<AuthField, "remember">) => {
   try {
-    const response = await request<Omit<AuthField, "remember">, IResponseAuth>(
-      "POST",
-      "/v1/auth/login",
-      data
-    );
+    const response = await request<
+      Omit<AuthField, "remember" | "full_name">,
+      IResponseAuth
+    >("POST", "/v1/auth/login", data);
     return response;
   } catch (error) {
     throw error;
