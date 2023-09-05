@@ -17,12 +17,12 @@ export const Header = () => {
         alignItems: "center",
       }}
     >
-      <Image
+      {/* <Image
         src={LogoSotatek}
         alt="Logo Sotatek"
         height={50}
         style={{ filter: "brightness(500%)" }}
-      />
+      /> */}
       <MenuHeader />
       <UserHeader />
     </Layout.Header>

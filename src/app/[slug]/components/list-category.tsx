@@ -31,7 +31,7 @@ export const ListCategory: React.FC = () => {
       </div>
       <div>
         {category.map((item, index) => (
-          <Category key={item.ID} category={item} id={`part-${index + 1}`} />
+          <Category key={item.ID} category={item} id={`${index + 1}`} />
         ))}
       </div>
     </>

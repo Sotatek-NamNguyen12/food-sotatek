@@ -6,6 +6,7 @@ import { saveMerchant } from "@/store/slices/merchant-slice";
 export function useGetMerchantDetail(id: string) {
   const dispatch = useAppDispatch();
   const query = useQuery("merchant", () => getMerchantDetail(id), {
+    enabled: !!id,
     onSuccess: (data) => {
       dispatch(saveMerchant(data));
     },
