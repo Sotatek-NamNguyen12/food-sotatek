@@ -1,10 +1,6 @@
 import { Menu, MenuProps } from "antd";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-
-enum EItem {
-  HOME = "HOME",
-  STORE = "STORE",
-}
 
 const itemStyle: MenuProps["style"] = {
   display: "flex",
@@ -16,21 +12,23 @@ const itemStyle: MenuProps["style"] = {
 const items: MenuProps["items"] = [
   {
     label: "Trang chủ",
-    key: EItem.HOME,
+    key: "/",
     style: itemStyle,
   },
   {
     label: "Cửa hàng",
-    key: EItem.STORE,
+    key: "/store",
     style: itemStyle,
   },
 ];
 
 export const MenuHeader = () => {
-  const [current, setCurrent] = useState<EItem>(EItem.HOME);
+  const router = useRouter();
+  const [current, setCurrent] = useState<string>("/");
 
   const onClick: MenuProps["onClick"] = (e) => {
-    setCurrent(e.key as EItem);
+    setCurrent(e.key);
+    router.push(e.key);
   };
   return (
     <Menu
