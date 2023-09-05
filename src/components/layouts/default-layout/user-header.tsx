@@ -1,7 +1,7 @@
 import { IUser } from "@/router/private-router";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Badge } from "antd";
-import React, { useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const StyleUserHeader = styled.div`
@@ -14,9 +14,11 @@ const StyleUserHeader = styled.div`
 `;
 
 export function UserHeader() {
-  const useName = useMemo(() => {
+  const [user, setUser] = useState<IUser>();
+
+  useEffect(() => {
     const user: IUser = JSON.parse(localStorage.getItem("user") as string);
-    return user.username;
+    setUser(user);
   }, []);
 
   return (
@@ -27,7 +29,7 @@ export function UserHeader() {
           style={{ fontSize: "30px", color: "white" }}
         />
       </Badge>
-      <p>{useName}</p>
+      <p>{user?.username}</p>
     </StyleUserHeader>
   );
 }
